@@ -1,11 +1,6 @@
 <template>
   <div>
-    <p>
-      <input type="text" v-model="greetings">
-    </p>
-    <p>
-      {{ greetings }} ({{ greetings.length }})
-    </p>
+    <button :class="active ? 'text-red' : 'text-green'" @click="toggle">Click Me</button>
   </div>
 </template>
 
@@ -14,17 +9,22 @@ export default {
   name: "app",
   data() {
     return {
-      greetings: 'Nuxt 3'
+      active: false
     }
   },
-  mounted() {
-    setTimeout(() => {
-      this.greetings = 'Nuxt 3 Absolute Basics'
-    }, 3000)
+  methods: {
+    toggle() {
+      this.active = ! this.active
+    }
   }
 }
 </script>
 
 <style scoped>
-
+.text-green {
+  color: green;
+}
+.text-red {
+  color: red;
+}
 </style>
